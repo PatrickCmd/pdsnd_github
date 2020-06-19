@@ -1,6 +1,7 @@
-import time
-import pandas as pd
 import sys
+import time
+
+import pandas as pd
 
 from data import CITY_DATA, DAYS, MONTHS
 from representation import tabular_representation
@@ -30,8 +31,8 @@ def get_filters():
             )
             while filter_ not in ["both", "day", "month", "none"]:
                 filter_ = input(
-                "Wrong filter, please filter the data by month, day, both or not at all? Type 'none' for no filter.\n"
-            )
+                    "Wrong filter, please filter the data by month, day, both or not at all? Type 'none' for no filter.\n"
+                )
 
             if filter_ == "both":
                 month = input(
