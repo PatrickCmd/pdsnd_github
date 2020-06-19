@@ -1,6 +1,7 @@
-import time
-import pandas as pd
 import sys
+import time
+
+import pandas as pd
 
 from data import CITY_DATA, DAYS, MONTHS
 from representation import tabular_representation
@@ -34,11 +35,10 @@ def get_filters():
                 )
 
             if filter_ == "both":
-                months = ["january", "february", "march", "april", "may", "june"]
                 month = input(
                     "Which month? January, February, March, April, May, or June?\n"
                 )
-                months.index(month.lower())
+                MONTHS.index(month.lower())
 
                 day = input(
                     "Which day of the week? (Mon, Tue, Wed, Thu, Fri, Sat, Sun)\n"
@@ -54,11 +54,10 @@ def get_filters():
                 break
 
             elif filter_ == "month":
-                months = ["january", "february", "march", "april", "may", "june"]
                 month = input(
                     "Which month? January, February, March, April, May, or June?\n"
                 )
-                months.index(month.lower())
+                MONTHS.index(month.lower())
                 break
             else:
                 break
@@ -98,8 +97,7 @@ def load_data(city, month, day):
 
     # filter by month if applicable
     if month != "all":
-        months = ["january", "february", "march", "april", "may", "june"]
-        month = months.index(month.lower()) + 1
+        month = MONTHS.index(month.lower()) + 1
 
         # filter by month to create new dataframe
         df = df[df["month"] == month]
