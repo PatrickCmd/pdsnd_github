@@ -35,9 +35,15 @@ You can get the dataset for this project from this [location](https://drive.goog
 - [BeautifulTable](https://beautifultable.readthedocs.io/en/latest/index.html)
 
 ## How to run
-Download the project locally on your computer. Extract the project and navigate to the project directory. Place the datasets in this directory
+Clone the project locally on your computer. Place the datasets in this directory
 
-Open either the terminal in Linux or command prompt in Windowns in this location and type the following command.
+```
+git clone https://github.com/PatrickCmd/pdsnd_github.git
+
+cd pdsnd_github
+```
+
+Open either the terminal in Linux or command prompt in Windowns in this location `pdsnd_github` and type the following command.
 
 ```
 pip install numpy, pandas, beautifultable
