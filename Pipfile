@@ -9,6 +9,13 @@ flake8 = "===3.7.9"
 isort = "==4.3.21"
 
 [packages]
+pandas = "*"
+numpy = "*"
+dash = "*"
+plotly = "*"
+beautifulsoup4 = "*"
+requests = "*"
+beautifultable = "*"
 
 [requires]
 python_version = "3.7"

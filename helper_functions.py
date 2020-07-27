@@ -93,7 +93,7 @@ def load_data(city, month, day):
 
     # extract month and day of week from Start Time to create new columns
     df["month"] = df["Start Time"].dt.month
-    df["day_of_week"] = df["Start Time"].dt.weekday_name
+    df["day_of_week"] = df["Start Time"].dt.day_name()
 
     # filter by month if applicable
     if month != "all":
@@ -133,21 +133,21 @@ def time_stats(df, filter_):
         common_month = df["month"].mode()[0]
         month = MONTHS[common_month - 1].title()
         count = month_counts[MONTHS.index(month.lower()) - 1]
-        table.append_row(["Month", month, count])
+        table.rows.append(["Month", month, count])
 
     # Display the most common day of week
     if filter_ == "none" or filter_ == "month":
         day_counts = df["day_of_week"].value_counts()
         common_day_of_week = df["day_of_week"].mode()[0]
         count = day_counts[common_day_of_week]
-        table.append_row(["Day of week", common_day_of_week, count])
+        table.rows.append(["Day of week", common_day_of_week, count])
 
     # Display the most common start hour
     df["hour"] = df["Start Time"].dt.hour
     start_hour_counts = df["hour"].value_counts()
     popular_hour = df["hour"].mode()[0]
     count = start_hour_counts[popular_hour]
-    table.append_row(["Start hour", popular_hour, count])
+    table.rows.append(["Start hour", popular_hour, count])
     print(table)
 
     print("\nThis took %s seconds." % (time.time() - start_time))
@@ -173,7 +173,7 @@ def station_stats(df):
     # Display most commonly used start station
     start_station_counts = df["Start Station"].value_counts().to_dict()
     common_start_station = df["Start Station"].mode()[0]
-    table.append_row(
+    table.rows.append(
         [
             "Start Station",
             common_start_station,
@@ -184,7 +184,7 @@ def station_stats(df):
     # Display most commonly used end station
     end_station_counts = df["End Station"].value_counts().to_dict()
     common_end_station = df["End Station"].mode()[0]
-    table.append_row(
+    table.rows.append(
         ["End Station", common_end_station, end_station_counts[common_end_station]]
     )
 
@@ -192,7 +192,7 @@ def station_stats(df):
     df["station_comb"] = df["Start Station"] + " and " + df["End Station"]
     most_common_start_end_station_comb = df["station_comb"].mode()[0]
     comb_counts = df["station_comb"].value_counts().to_dict()
-    table.append_row(
+    table.rows.append(
         [
             "Trip",
             most_common_start_end_station_comb,

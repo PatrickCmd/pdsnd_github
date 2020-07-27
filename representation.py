@@ -44,9 +44,9 @@ def tabular_representation(column_headers, data=None):
     table.set_style(BeautifulTable.STYLE_BOX)
 
     t = table
-    t.column_headers = column_headers
+    t.columns.headers = column_headers
     if data is not None:
         for key, value in data.items():
-            t.append_row([key, value])
+            t.rows.append([key, value])
 
     return t
